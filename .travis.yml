@@ -1,7 +1,7 @@
 language: node_js
 
 node_js:
-  - "6"
+  - '6'
 
 branches:
   only:
@@ -23,4 +23,5 @@ script:
   - if [ "$BUILD" == "YES" ]; then git push -q upstream HEAD:gh-pages; else true; fi
 
 notifications:
-  slack: $SLACK_TEAM:$SLACK_TOKEN
+  slack:
+    secure: owr+n8BIdinwvLLCcMiYyYnUKYk2/OZs4akwNgf+3q+Y9DcD86mT5R8J/nSLJgH4uSp5ZE4sqtfX5rDSgVvw3/aHWAXomHA344+hXEGZQCxMKbg4obrvyQy/BrTGLdLul+Ur/ZZ8P0fj3esaRHhNA2RkFZIcqa5X/GVUvoWCqR4VZC50NptOrqP3hqLcjsGYY8Q85ov6JyY4rbQl7e6Msnf6BV1MK9bKSo2wZQr2IOWW9KjZgMq8Jiz9Y/21j/Wo+YyrWNGL0XKsdVZvvunc9QW9pyRMT7QJ18ZdfFjzrItYLH9yp6th0wo8EHvAa1Uvuc3fCdPFoJCLbxyFz8HVq1726ANblNQ2Yf9F79Rklzmd7EszGBFVfOwkgH6Npb3M2wS0Jsu4IEzKmEPbIu422YqHOw0Uk8oJX4It2iedbsafYKUcgcLVvAVvzxO4X8tD8l7/6Yq2Now6dTvHSOFuePBvxrHsHVCrfa7blVh5UfTy5GvszC6HZHddAAxFhjmFvHvi7aCzGU/pZ980M9KB3rlyHXTtO2hmwf30aKiHH7GfOxXaGbcYGMYp+jE0sPx3Xgp0Dveairkbm6hoJxGZzFuVGSLpUGtkmjG2l4gkoNKVyFCGeGPS5Ksg8FTTAN5YnOVbrO2fa2fID6k+v5y8YMlg11v8r71PQB2xbigWnP0=
