@@ -21,3 +21,6 @@ script:
   - if [ "$BUILD" == "YES" ]; then git add -A .; else true; fi
   - if [ "$BUILD" == "YES" ]; then git commit -m "Build triggered by commit $TRAVIS_COMMIT"; else true; fi
   - if [ "$BUILD" == "YES" ]; then git push -q upstream HEAD:gh-pages; else true; fi
+
+notifications:
+  slack: $SLACK_TEAM:$SLACK_TOKEN
