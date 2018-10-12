@@ -1,13 +1,14 @@
 <template>
   <div id="app">
-    <chmod></chmod>
+    <Chmod/>
   </div>
 </template>
 
 <script>
-import Chmod from './components/Chmod'
+import Chmod from './components/Chmod.vue'
 
 export default {
+  name: 'app',
   components: {
     Chmod
   }

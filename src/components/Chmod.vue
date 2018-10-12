@@ -1,13 +1,16 @@
 <template>
-  <div>
-    <h1>chmod</h1>
+  <div class="chmod">
+    <div>
+      <h1>chmod</h1>
+    </div>
+    <input placeholder="rwxr-xr-x" size="9" v-model="permissions" class="large" v-on:input="parse">
+    <div class="result">{{ result }}</div>
   </div>
-  <input placeholder="rwxr-xr-x" size="9" v-model="permissions" class="large" v-on:input="parse">
-  <div class="result">{{ result }}</div>
 </template>
 
 <script>
 export default {
+  name: 'chmod',
   data () {
     return {
       permissions: '',
