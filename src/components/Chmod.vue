@@ -3,7 +3,7 @@
     <div>
       <h1>chmod</h1>
     </div>
-    <input placeholder="rwxr-xr-x" size="9" v-model="permissions" class="large" v-on:input="parse">
+    <input placeholder="rwxr-xr-x" size="10" maxlength="10" v-model="permissions" class="large" v-on:input="parse">
     <div class="result">{{ result }}</div>
   </div>
 </template>
@@ -14,18 +14,17 @@ export default {
   data () {
     return {
       permissions: '',
+      permissionsParts: '',
       result: '000'
     }
   },
   methods: {
     parse: function () {
       // Strip the first character if it contains the special permissions flag
-      if (this.permissions.length === 10) {
-        this.permissions = this.permissions.replace(/^[_dlst]/, '')
-      }
+      this.permissionsParts = this.permissions.replace(/^[_dlst]/, '')
 
       // Stop parsing if the string is not 9 characters
-      if (this.permissions.length !== 9) {
+      if (this.permissionsParts.length !== 9) {
         return
       }
 
@@ -44,7 +43,7 @@ export default {
           start = 6
           break
       }
-      var sectionString = this.permissions.substring(start, start + 3)
+      var sectionString = this.permissionsParts.substring(start, start + 3)
       var first = this.getPermission(sectionString.substring(0, 1))
       var second = this.getPermission(sectionString.substring(1, 2))
       var third = this.getPermission(sectionString.substring(2, 3))
