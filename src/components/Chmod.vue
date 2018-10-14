@@ -21,7 +21,7 @@ export default {
   methods: {
     parse: function () {
       // Strip the first character if it contains the special permissions flag
-      this.permissionsParts = this.permissions.replace(/^[_dlst]/, '')
+      this.permissionsParts = this.permissions.replace(/^[_\-dlst]/, '')
 
       // Stop parsing if the string is not 9 characters
       if (this.permissionsParts.length !== 9) {
