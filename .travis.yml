@@ -7,20 +7,24 @@ branches:
   only:
     - master
 
-script:
-  - npm install && npm run build
-  - cd dist
-  - git init
-  - git config user.name "Travis CI" && git config user.email "builds@travis-ci.org"
-  - git remote add upstream https://$GH_TOKEN@github.com/kielabokkie/chmod.git
-  - git fetch upstream
-  - git reset upstream/gh-pages
-  - git add .
-  - if git diff-index --quiet HEAD; then BUILD="NO"; else BUILD="YES"; fi
-  - echo "Pushing to Github Pages [$BUILD]"
-  - if [ "$BUILD" == "YES" ]; then git add -A .; else true; fi
-  - if [ "$BUILD" == "YES" ]; then git commit -m "Build triggered by commit $TRAVIS_COMMIT"; else true; fi
-  - if [ "$BUILD" == "YES" ]; then git push -q upstream HEAD:gh-pages; else true; fi
+jobs:
+  include:
+    - stage: deploy
+      if: sender == kielabokkie
+      script:
+        - npm install && npm run build
+        - cd dist
+        - git init
+        - git config user.name "Travis CI" && git config user.email "builds@travis-ci.org"
+        - git remote add upstream https://$GH_TOKEN@github.com/kielabokkie/chmod.git
+        - git fetch upstream
+        - git reset upstream/gh-pages
+        - git add .
+        - if git diff-index --quiet HEAD; then BUILD="NO"; else BUILD="YES"; fi
+        - echo "Pushing to Github Pages [$BUILD]"
+        - if [ "$BUILD" == "YES" ]; then git add -A .; else true; fi
+        - if [ "$BUILD" == "YES" ]; then git commit -m "Build triggered by commit $TRAVIS_COMMIT"; else true; fi
+        - if [ "$BUILD" == "YES" ]; then git push -q upstream HEAD:gh-pages; else true; fi
 
 notifications:
   slack:
